@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:48:33 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/05 16:21:34 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/06 15:31:29 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strdup(const char *src)
 {
 	char	*p;
-	size_t	i;
+	int		i;
 
 	i = 0;
 	p = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
@@ -32,7 +32,7 @@ char	*ft_strdup(const char *src)
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*s1 && *s2 && *s1 == *s2)
@@ -45,7 +45,7 @@ int	ft_strcmp(char *s1, char *s2)
 
 int	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -55,7 +55,7 @@ int	ft_strlen(const char *str)
 
 void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str)
