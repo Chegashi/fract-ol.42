@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key.c                                              :+:      :+:    :+:   */
+/*   ft_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 15:04:41 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/07 19:32:00 by mochegri         ###   ########.fr       */
+/*   Created: 2021/09/07 15:21:10 by mochegri          #+#    #+#             */
+/*   Updated: 2021/09/07 19:24:23 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	mouse_hook(int button, int x, int y)
+double	ft_module(t_point z)
 {
-	printf("{%d}{%d,%d}\n", button, x, y);
-	return (0);
+	return (sqrt((z.x * z.x) + (z.y * z.y)));
 }
 
-int	key_hook(int keycode, t_fractol *fractol)
+t_point	ft_plus(t_point z1, t_point z2)
 {
-	printf("%d\n", keycode);
-	if (keycode == ESC)
-		ft_exit(fractol);
-	return (0);
+	return (ft_init_point(z1.x + z2.x, z1.y + z2.y));
+}
+
+t_point	ft_sqaure(t_point z)
+{
+	return (ft_init_point((z.x * z.x) - (z.y * z.y), (z.x * z.y) + (z.x * z.y)));
+}
+
+t_point	ft_init_point(const double x, const double y)
+{
+	t_point	z;
+
+	z.x = x;
+	z.y = y;
+	return (z);
 }

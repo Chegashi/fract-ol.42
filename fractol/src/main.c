@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:04:55 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/06 17:32:06 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/07 18:53:06 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int ac, char **av)
 		return (0);
 	fractol->name = ft_check_arg(ac, av);
 	ft_init_fractal(fractol);
-	ft_render(fractol);
 	return (0);
 }
 

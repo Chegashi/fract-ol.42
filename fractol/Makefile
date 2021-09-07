@@ -6,18 +6,19 @@
 #    By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/06 15:08:16 by mochegri          #+#    #+#              #
-#    Updated: 2021/09/06 15:33:35 by mochegri         ###   ########.fr        #
+#    Updated: 2021/09/07 18:23:39 by mochegri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
-flags = -Wall -Wextra -Werror
+flags = -Wall -Wextra -Werror -g
 SRCS = 	src/main.c \
 		src/libft.c \
 		src/win.c \
 		src/key.c \
 		src/render.c \
+		src/ft_math.c
 
 MAND = $(SRCS)
 
@@ -53,4 +54,4 @@ Julia: re
 	./fractol Julia
 
 Mandelbrot : re
-	./fractol Mandelbrot
+	./fractol Mandelbrot > t

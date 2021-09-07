@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:27:56 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/06 17:46:49 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/07 19:49:59 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,53 @@ void	ft_clean_win(t_fractol *fractol)
 
 void	ft_render(t_fractol *fractol)
 {
-	
+	double		x;
+	double		y;
+	int		n;
+	t_point	c;
+	int		color;
+
+	x = -1;
+	n = 0;
+	int colors[80];
+	int j = -1;
+	while (++j < 80)
+		colors[j] = 53687*j;
+	while (++x < WIDTH)
+	{
+		y = -1;
+		while (++y < HEIGHT)
+		{
+			c = ft_init_point(RE_START + x / WIDTH * (RE_END - RE_START),
+					IMG_START + x / HEIGHT * (IMG_END - IMG_START));
+			n = mandelbrot(c);
+			color = 255 - (int)(n * 255 / MAX_ITER);
+			// color = 564;
+			my_mlx_pixl_put(&(fractol->img), x, y, colors[n]);
+			// printf("%d\n", n);
+		}
+	}
+	mlx_put_image_to_window(fractol->mlx_ptr, fractol->win_ptr,
+		fractol->img.img, 0, 0);
 }
 
-t_point	Mandelbrot()
+int	mandelbrot(t_point c)
 {
-	
+	t_point	z;
+	int		n;
+
+	n = 0;
+	z.x = 0;
+	z.y = 0;
+	while (ft_module(z) <= 2 && n < MAX_ITER)
+	{
+		z = ft_plus(ft_sqaure(z), c);
+		n++;
+	}
+	return (n);
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
