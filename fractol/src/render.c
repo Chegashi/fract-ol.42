@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:27:56 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/07 19:49:59 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/08 17:57:10 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,27 @@ void	ft_clean_win(t_fractol *fractol)
 
 void	ft_render(t_fractol *fractol)
 {
-	double		x;
-	double		y;
+	t_point	p;
 	int		n;
-	t_point	c;
-	int		color;
+	t_hsv	color;
 
-	x = -1;
+	p.x = -1;
 	n = 0;
-	int colors[80];
-	int j = -1;
-	while (++j < 80)
-		colors[j] = 53687*j;
-	while (++x < WIDTH)
+	while (++(p.x) < WIDTH)
 	{
-		y = -1;
-		while (++y < HEIGHT)
+		p.y = -1;
+		while (++(p.y) < HEIGHT)
 		{
-			c = ft_init_point(RE_START + x / WIDTH * (RE_END - RE_START),
-					IMG_START + x / HEIGHT * (IMG_END - IMG_START));
-			n = mandelbrot(c);
-			color = 255 - (int)(n * 255 / MAX_ITER);
-			// color = 564;
-			my_mlx_pixl_put(&(fractol->img), x, y, colors[n]);
-			// printf("%d\n", n);
+			n = mandelbrot(ft_init_point(RE_START + p.x / WIDTH * (RE_END 
+					- RE_START), IMG_START + p.y / HEIGHT * (IMG_END
+					- IMG_START)));
+			color.h = 255 - (n * 255 / MAX_ITER);
+			color.s = 50;
+			if (n < MAX_ITER)
+				color.v = 255;
+			else
+				color.v = 0;
+			my_mlx_pixl_put(&(fractol->img), p.x, p.y, hcv2rgb(color));
 		}
 	}
 	mlx_put_image_to_window(fractol->mlx_ptr, fractol->win_ptr,

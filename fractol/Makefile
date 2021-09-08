@@ -6,7 +6,7 @@
 #    By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/06 15:08:16 by mochegri          #+#    #+#              #
-#    Updated: 2021/09/07 18:23:39 by mochegri         ###   ########.fr        #
+#    Updated: 2021/09/08 17:29:17 by mochegri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRCS = 	src/main.c \
 		src/win.c \
 		src/key.c \
 		src/render.c \
-		src/ft_math.c
+		src/ft_math.c \
+		src/colors.c \
+		src/hcv2rgb.c \
 
 MAND = $(SRCS)
 

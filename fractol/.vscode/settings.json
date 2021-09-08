@@ -5,7 +5,10 @@
 		  "color": "#882305"
 		},
 
-	  ],
+	],
+	"files.associations": {
+		"algorithm": "c"
+	},
 }
 
 

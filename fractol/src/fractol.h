@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:20:27 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/07 19:35:12 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/08 17:43:32 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <sys/stat.h>
 # define MSG "usage : fractol [fractals]\nfractals \
 	:\n--> Mandelbrot\n--> Julia\n"
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 2500
+# define HEIGHT 1300
 # define ESC 53 
 # define ZOOM_IN 5
 # define ZOOM_OUT 4
@@ -54,11 +54,35 @@ typedef struct s_fractol
 {
 	int				width;
 	int				hight;
+	double			re_start;
+	double			re_end;
+	double			img_start;
+	double			img_end;
 	void			*win_ptr;
 	void			*mlx_ptr;
 	char			*name;
 	t_data			img;
 }	t_fractol;
+
+typedef struct s_rgb2hsv
+{
+	double	c;
+	double	x;
+	double	m;
+	double	r;
+	double	g;
+	double	b;
+	int	R;
+	int	G;
+	int	B;
+}	t_rgb2hsv;
+
+typedef struct s_hsv
+{
+	double	h;
+	double	s;
+	double	v;
+}	t_hsv;
 
 char	*ft_strdup(const char *src);
 char	*ft_check_arg(int ac, char **av);
@@ -78,5 +102,13 @@ t_point	ft_plus(t_point z1, t_point z2);
 t_point	ft_sqaure(t_point z);
 t_point	ft_init_point(const double x, const double y);
 int		mandelbrot(t_point c);
-int	create_trgb(int t, int r, int g, int b);
+int		create_trgb(int t, int r, int g, int b);
+int		hcv2rgb(t_hsv c);
+void	hcv2rgb_h0(t_rgb2hsv *color);
+void	hcv2rgb_h60(t_rgb2hsv *color);
+void	hcv2rgb_h120(t_rgb2hsv *color);
+void	hcv2rgb_h180(t_rgb2hsv *color);
+void	hcv2rgb_h240(t_rgb2hsv *color);
+void	hcv2rgb_h300(t_rgb2hsv *color);
+
 #endif
