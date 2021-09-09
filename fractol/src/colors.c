@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 15:15:04 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/08 17:46:04 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/08 19:16:19 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@ int	hcv2rgb(t_hsv c)
 {
 	t_rgb2hsv	color;
 
-	// c.s /= 255;
-	// c.v /= 255;
-	// if (c.h > 360 || c.h < 0 || c.s > 100 || c.s < 0 || c.v > 100 || c.v < 0)
-	// {
-	// 	printf("%d\n", c.s > 100 );
-	// 	return (0);
-	// }
 	color.c = (c.v / 255) * (c.s / 255);
 	color.x = color.c * (1 - fabs(fmod(c.h / 60.0, 2) - 1));
 	color.m = c.v / 255 - color.c;
