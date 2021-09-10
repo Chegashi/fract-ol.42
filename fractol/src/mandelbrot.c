@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 15:18:26 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/09 20:00:17 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/10 14:09:52 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** julia
 */
 
-int	mandelbrot(t_point c)
+int	mandelbrot(const t_point c)
 {
 	t_point	z;
 	int		n;

@@ -6,13 +6,13 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:48:33 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/06 15:31:29 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/10 14:38:20 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup(char *src)
 {
 	char	*p;
 	int		i;
@@ -43,14 +43,14 @@ int	ft_strcmp(char *s1, char *s2)
 	return (*s1 - *s2);
 }
 
-int	ft_strlen(const char *str)
+int	ft_strlen(char *str)
 {
-	int	i;
+	char	*end;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	end = str;
+	while (*end)
+		end++;
+	return (end - str);
 }
 
 void	ft_putstr(char *str)

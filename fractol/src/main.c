@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:04:55 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/09 19:59:35 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/10 19:42:30 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ int	main(int ac, char **av)
 		return (0);
 	fractol->name = ft_check_arg(ac, av);
 	fractol->re_start = -2;
-	fractol->re_end = 2 ;
-	fractol->img_end = -2;
-	fractol->img_start = -2;
+	fractol->re_end = 1;
+	fractol->img_end = 1;
+	fractol->img_start = -1;
 	ft_init_fractal(fractol);
-	mlx_key_hook(fractol->win_ptr, key_hook, fractol);
 	mlx_hook(fractol->win_ptr, 2, 0, key_hook, fractol);
 	mlx_hook(fractol->win_ptr, 4, 0, mouse_hook, fractol);
 	mlx_hook(fractol->win_ptr, 17, 0, ft_exit, fractol);
@@ -59,7 +58,8 @@ char	*ft_check_arg(int ac, char **av)
 int	ft_fractol(t_point p, t_fractol fractol)
 {
 	// if (ft_strcmp(fractol.name, "Mandelbrot"))
-	return (mandelbrot(ft_transposer(p,fractol)));
+	// printf("dx=%LF\tdy=%LF\n", fractol.len_x, fractol.len_y);
+	return (mandelbrot(mac2rod(p,fractol)));
 	// else if (ft_strcmp(fractol.name, "Julia"))
 	// 	return (julia(z));
 	// else

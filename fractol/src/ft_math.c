@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:21:10 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/09 19:59:00 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/10 17:36:44 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_point	ft_plus(t_point z1, t_point z2)
 
 t_point	ft_sqaure(t_point z)
 {
-	return (ft_init_point((z.x * z.x) - (z.y * z.y), (z.x * z.y) + (z.x * z.y)));
+	return (ft_init_point((z.x * z.x) - (z.y * z.y),
+			(z.x * z.y) + (z.x * z.y)));
 }
 
 t_point	ft_init_point(const long double x, const long double y)
@@ -34,13 +35,4 @@ t_point	ft_init_point(const long double x, const long double y)
 	z.x = x;
 	z.y = y;
 	return (z);
-}
-
-t_point	ft_transposer(t_point z, t_fractol fractol)
-{
-	t_point p;
-
-	p.x = fractol.re_start + z.x / WIDTH * (fractol.re_end - fractol.re_start);
-	p.y = fractol.img_start + z.y / HEIGHT * (fractol.img_end - fractol.img_start);
-	return (p);
 }
