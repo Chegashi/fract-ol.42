@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_math.c                                          :+:      :+:    :+:   */
+/*   ft_math2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/07 15:21:10 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/11 17:20:30 by mochegri         ###   ########.fr       */
+/*   Created: 2021/09/11 17:04:46 by mochegri          #+#    #+#             */
+/*   Updated: 2021/09/11 17:56:27 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-long double	ft_module(t_point z)
+t_point	ft_cos_z(t_point z)
 {
-	return (sqrt((z.x * z.x) + (z.y * z.y)));
+	return (ft_init_point(cos(z.x) * coshl(z.y), -1 * sin(z.x) * sinhl(z.y)));
 }
 
-t_point	ft_plus(t_point z1, t_point z2)
+t_point	ft_fraction(t_point z1)
 {
-	return (ft_init_point(z1.x + z2.x, z1.y + z2.y));
-}
-
-t_point	ft_sqaure(t_point z)
-{
-	return (ft_init_point((z.x * z.x) - (z.y * z.y),
-			(z.x * z.y) + (z.x * z.y)));
-}
-
-t_point	ft_init_point(const long double x, const long double y)
-{
-	t_point	z;
-
-	z.x = x;
-	z.y = y;
-	return (z);
+	return (ft_init_point(z1.x / (z1.x * z1.x + z1.y * z1.y),
+			(-1 * z1.y) / (z1.x * z1.x + z1.y * z1.y)));
 }

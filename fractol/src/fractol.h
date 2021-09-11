@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:20:27 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/11 11:26:56 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/11 18:56:45 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # define MSG "usage : fractol [fractals]\nfractals \
-	:\n--> Mandelbrot\n--> Julia\n"
+	:\n--> Mandelbrot\n--> Julia\n--> Mandelbrot_4\n--> Flower\n"
 # define WIDTH 800
 # define HEIGHT 800
 # define ESC 53 
@@ -34,7 +34,8 @@
 # define KEY_DOWN 125
 # define KEY_LEEFT 124
 # define KEY_RIGHT 123
-
+# define KEY_PLUS 69
+# define KEY_MOIS 79
 typedef struct s_point
 {
 	long double			x;
@@ -62,7 +63,7 @@ typedef struct s_fractol
 	void			*mlx_ptr;
 	char			*name;
 	t_data			img;
-	int				color[80];
+	int				b;
 }	t_fractol;
 
 typedef struct s_rgb2hsv
@@ -85,6 +86,14 @@ typedef struct s_hsv
 	long double	v;
 }	t_hsv;
 
+typedef struct s_steps
+{
+	t_point		point;
+	long double	dx_step;
+	long double	dy_step;
+	long double	dxx_step;
+	long double	dyy_step;
+}	t_steps;
 char		*ft_strdup(char *src);
 char		*ft_check_arg(int ac, char **av);
 int			ft_strcmp(char *s1, char *s2);
@@ -99,10 +108,10 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		my_mlx_pixl_put(t_data *data, int x, int y, int color);
 void		ft_render(t_fractol *fractol);
 long double	ft_module(const t_point z);
-t_point		ft_plus(const t_point z1, const t_point z2);
+t_point		ft_plus(t_point z1, const t_point z2);
 t_point		ft_sqaure(const t_point z);
 t_point		ft_init_point(const long double x, const long double y);
-int			mandelbrot(const t_point c);
+int			mandelbrot(t_point c);
 int			create_trgb(int t, int r, int g, int b);
 int			hcv2rgb(t_hsv c);
 void		hcv2rgb_h0(t_rgb2hsv *color);
@@ -115,5 +124,11 @@ int			ft_fractol(t_point p, t_fractol fractol);
 t_point		ft_transposer(const t_point z, t_fractol fractol);
 t_point		mac2rod(t_point pixel, t_fractol fractol);
 t_point		rod2mac(t_point p1, t_fractol fractol);
-
+int			ft_fractal_is_def(char *s);
+int			mandelbrot_4(const t_point c);
+int			julia(const t_point c);
+t_point		ft_fraction(t_point z1);
+t_point		ft_cos_z(t_point z);
+int			flower(const t_point c);
+void		ft_color_key(int keycode, t_fractol *fractol);
 #endif

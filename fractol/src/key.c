@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:04:41 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/11 14:02:18 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/11 18:58:05 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,34 @@
 
 int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 {
-	t_point		point;
-	long double	dx_step;
-	long double	dy_step;
-	long double	dxx_step;
-	long double	dyy_step;
+	t_steps	s;
 
-	point = mac2rod(ft_init_point(x,y), *fractol);
-	dx_step = fabsl((point.x - fractol->re_start) / 10);
-	dxx_step = fabsl((point.x - fractol->re_end) / 10);
-	dy_step = fabsl((point.y - fractol->img_end) / 10);
-	dyy_step = fabsl((point.y - fractol->img_start) / 10);
-	point = mac2rod(ft_init_point(x, y), *fractol);
+	s.point = mac2rod(ft_init_point(x, y), *fractol);
+	s.dx_step = (s.point.x - fractol->re_start) / 10.0;
+	s.dxx_step = (fractol->re_end - s.point.x) / 10.0;
+	s.dy_step = (fractol->img_end - s.point.y) / 10.0;
+	s.dyy_step = (s.point.y - fractol->img_start) / 10.0;
 	if (button == ZOOM_IN)
 	{
-		fractol->re_start += dx_step;
-		fractol->re_end -= dxx_step;
-		fractol->img_start += dyy_step;
-		fractol->img_end -= dy_step;
+		fractol->re_start += s.dx_step;
+		fractol->re_end -= s.dxx_step;
+		fractol->img_start += s.dyy_step;
+		fractol->img_end -= s.dy_step;
 	}
-	if (button == ZOOM_OUT)
+	else if (button == ZOOM_OUT)
 	{
-		fractol->re_start -= dx_step;
-		fractol->re_end += dxx_step;
-		fractol->img_start -= dyy_step;
-		fractol->img_end += dy_step;
+		fractol->re_start -= s.dx_step;
+		fractol->re_end += s.dxx_step;
+		fractol->img_start -= s.dyy_step;
+		fractol->img_end += s.dy_step;
 	}
-	fractol->len_x = fractol->re_end - fractol->re_start;
-	fractol->len_y = fractol->img_end - fractol->img_start;
 	ft_render(fractol);
 	return (0);
 }
 
 int	key_hook(int keycode, t_fractol *fractol)
 {
+	ft_color_key(keycode, fractol);
 	if (keycode == ESC)
 		ft_exit(fractol);
 	else if (keycode == KEY_UP)
@@ -70,8 +64,14 @@ int	key_hook(int keycode, t_fractol *fractol)
 		fractol->re_start -= fractol->len_x / 10.0;
 		fractol->re_end -= fractol->len_x / 10.0;
 	}
-	fractol->len_x = fabsl(fractol->re_end - fractol->re_start);
-	fractol->len_y = fabsl(fractol->img_end - fractol->img_start);
 	ft_render(fractol);
 	return (0);
+}
+
+void	ft_color_key(int keycode, t_fractol *fractol)
+{
+	if (keycode == KEY_PLUS)
+		fractol->b += 25;
+	else if (keycode == KEY_MOIS)
+		fractol->b -= 25;
 }

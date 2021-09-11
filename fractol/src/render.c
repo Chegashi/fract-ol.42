@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:27:56 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/10 18:31:04 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:00:02 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,6 @@ void	my_mlx_pixl_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	ft_clean_win(t_data *data)
-{
-	int		i;
-	int		j;
-
-	i = -1;
-	while (++i < WIDTH)
-	{
-		j = -1;
-		while (++j < HEIGHT)
-			my_mlx_pixl_put(data, i, j, 0x0);
-	}
-}
-
 void	ft_render(t_fractol *fractol)
 {
 	t_point	p;
@@ -43,24 +29,20 @@ void	ft_render(t_fractol *fractol)
 
 	p.x = -1;
 	n = 0;
-		// printf("{%LF|%LF}\t{%LF|%LF}\n", fractol->re_start, fractol->re_end, fractol->img_start, fractol->img_end);
-	ft_clean_win(&(fractol->img));
+	fractol->len_x = fractol->re_end - fractol->re_start;
+	fractol->len_y = fractol->img_end - fractol->img_start;
+	mlx_clear_window(fractol->mlx_ptr, fractol->win_ptr);
 	while (++(p.x) < WIDTH)
 	{
 		p.y = -1;
 		while (++(p.y) < HEIGHT)
 		{
 			n = ft_fractol(p, *fractol);
-			// color.h = n * 255 / MAX_ITER;
-			// color.s = 255;
-			// if (n < MAX_ITER)
-			// 	color.v = 255;
-			// else
-			// 	color.v = 0;
-			if ( n == MAX_ITER)
+			if (n == MAX_ITER)
 				my_mlx_pixl_put(&(fractol->img), p.x, p.y, 0);
 			else
-			my_mlx_pixl_put(&(fractol->img), p.x, p.y, create_trgb(0, n, n*4, n*9));
+				my_mlx_pixl_put(&(fractol->img), p.x, p.y, create_trgb(0,
+						n * 3.1875, (n % 10) * 255 / 8, fractol->b % 255));
 		}
 	}
 	mlx_put_image_to_window(fractol->mlx_ptr, fractol->win_ptr,

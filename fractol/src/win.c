@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:23:04 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/10 19:48:41 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/11 18:43:38 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 
 void	ft_init_fractal(t_fractol *fractol)
 {
-	int	start;
-	int	end;
-	int	i;
-
-	i = -1;
-	start = 0x0009ff;
-	end = 0x330e10;
-	while (++i < MAX_ITER)
-		fractol->color[i] = ((end - start) / MAX_ITER) * i;
 	fractol->mlx_ptr = mlx_init();
 	fractol->win_ptr = mlx_new_window(fractol->mlx_ptr,
 			WIDTH, HEIGHT, fractol->name);
@@ -33,8 +24,7 @@ void	ft_init_fractal(t_fractol *fractol)
 	fractol->re_end = 1;
 	fractol->img_start = -1;
 	fractol->img_end = 1;
-	fractol->len_x = fabsl(fractol->re_end - fractol->re_start);
-	fractol->len_y = fabsl(fractol->img_end - fractol->img_start);
+	fractol->b = 0;
 	ft_render(fractol);
 }
 
@@ -51,13 +41,12 @@ t_point	mac2rod(t_point pixel, t_fractol fractol)
 
 	p1.x = fractol.re_start + pixel.x / WIDTH * fractol.len_x;
 	p1.y = fractol.img_end - pixel.y / HEIGHT * fractol.len_y;
-	// printf("{%LF|%LF}\t{%LF|%LF}\n", pixel.x, pixel.y, p1.x, p1.y);
 	return (p1);
 }
 
-t_point rod2mac(t_point p1, t_fractol fractol)
+t_point	rod2mac(t_point p1, t_fractol fractol)
 {
-	t_point pixel;
+	t_point	pixel;
 
 	pixel.x = ((p1.x - fractol.re_start) / fractol.len_x) * WIDTH;
 	pixel.y = ((p1.y - fractol.img_start) / fractol.len_y) * HEIGHT;

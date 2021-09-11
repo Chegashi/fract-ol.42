@@ -6,19 +6,9 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:04:55 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/11 11:26:50 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/11 18:59:06 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-**	Your software should offer the Julia set and the Mandelbrot set.
-**	The mouse wheel zooms in and out, almost infinitely (within the limits of
-**	the computer). This is the very principle of fractals.
-**	You must use at least a few colors to show the depth of each fractal.
-**	You It’s even better if you hack away on psychedelic effects.
-**	You must be able to create different Julia set with the parameters of 
-**	the program.
-*/
 
 #include "fractol.h"
 
@@ -45,23 +35,26 @@ int	main(int ac, char **av)
 char	*ft_check_arg(int ac, char **av)
 {
 	if (ac == 2)
-	{
-		if (!ft_strcmp(*(av + 1), "Mandelbrot"))
-			return (ft_strdup("Mandelbrot"));
-		else if (!ft_strcmp(*(av + 1), "Julia"))
-			return (ft_strdup("Julia"));
-	}
+		if (ft_fractal_is_def(*(av + 1)))
+			return (ft_strdup(*(av + 1)));
 	ft_putstr(MSG);
 	exit(1);
 }
 
 int	ft_fractol(t_point p, t_fractol fractol)
 {
-	// if (ft_strcmp(fractol.name, "Mandelbrot"))
-	// printf("dx=%LF\tdy=%LF\n", fractol.len_x, fractol.len_y);
-	return (mandelbrot(mac2rod(p,fractol)));
-	// else if (ft_strcmp(fractol.name, "Julia"))
-	// 	return (julia(z));
-	// else
-	// 	return (cosin(z));
+	if (!ft_strcmp("Mandelbrot", fractol.name))
+		return (mandelbrot(mac2rod(p, fractol)));
+	else if (!ft_strcmp("Mandelbrot_4", fractol.name))
+		return (mandelbrot_4(mac2rod(p, fractol)));
+	else if (!ft_strcmp("Flower", fractol.name))
+		return (flower(mac2rod(p, fractol)));
+	else
+		return (julia(mac2rod(p, fractol)));
+}
+
+int	ft_fractal_is_def(char *s)
+{
+	return (!ft_strcmp(s, "Mandelbrot") || !ft_strcmp(s, "Julia")
+		|| !ft_strcmp(s, "Mandelbrot_4") || !ft_strcmp(s, "Flower"));
 }
