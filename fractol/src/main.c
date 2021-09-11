@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:04:55 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/10 19:42:30 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/11 11:26:50 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	main(int ac, char **av)
 		return (0);
 	fractol->name = ft_check_arg(ac, av);
 	fractol->re_start = -2;
-	fractol->re_end = 1;
-	fractol->img_end = 1;
-	fractol->img_start = -1;
+	fractol->re_end = 2;
+	fractol->img_end = 2;
+	fractol->img_start = -2;
 	ft_init_fractal(fractol);
 	mlx_hook(fractol->win_ptr, 2, 0, key_hook, fractol);
 	mlx_hook(fractol->win_ptr, 4, 0, mouse_hook, fractol);

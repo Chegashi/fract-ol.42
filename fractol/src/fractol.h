@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:20:27 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/10 17:35:08 by mochegri         ###   ########.fr       */
+/*   Updated: 2021/09/11 11:26:56 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <sys/stat.h>
 # define MSG "usage : fractol [fractals]\nfractals \
 	:\n--> Mandelbrot\n--> Julia\n"
-# define WIDTH 600
+# define WIDTH 800
 # define HEIGHT 800
 # define ESC 53 
 # define ZOOM_IN 5
