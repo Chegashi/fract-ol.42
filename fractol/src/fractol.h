@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:20:27 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/11 18:56:45 by mochegri         ###   ########.fr       */
+/*   Updated: 2022/07/30 20:24:17 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 	:\n--> Mandelbrot\n--> Julia\n--> Mandelbrot_4\n--> Flower\n"
 # define WIDTH 800
 # define HEIGHT 800
-# define ESC 53 
+# define ESC 53
 # define ZOOM_IN 5
 # define ZOOM_OUT 4
 # define MAX_ITER 80
@@ -36,6 +36,7 @@
 # define KEY_RIGHT 123
 # define KEY_PLUS 69
 # define KEY_MOIS 79
+
 typedef struct s_point
 {
 	long double			x;
@@ -66,26 +67,6 @@ typedef struct s_fractol
 	int				b;
 }	t_fractol;
 
-typedef struct s_rgb2hsv
-{
-	long double	c;
-	long double	x;
-	long double	m;
-	long double	r;
-	long double	g;
-	long double	b;
-	int			R;
-	int			G;
-	int			B;
-}	t_rgb2hsv;
-
-typedef struct s_hsv
-{
-	long double	h;
-	long double	s;
-	long double	v;
-}	t_hsv;
-
 typedef struct s_steps
 {
 	t_point		point;
@@ -94,6 +75,7 @@ typedef struct s_steps
 	long double	dxx_step;
 	long double	dyy_step;
 }	t_steps;
+
 char		*ft_strdup(char *src);
 char		*ft_check_arg(int ac, char **av);
 int			ft_strcmp(char *s1, char *s2);
@@ -113,13 +95,6 @@ t_point		ft_sqaure(const t_point z);
 t_point		ft_init_point(const long double x, const long double y);
 int			mandelbrot(t_point c);
 int			create_trgb(int t, int r, int g, int b);
-int			hcv2rgb(t_hsv c);
-void		hcv2rgb_h0(t_rgb2hsv *color);
-void		hcv2rgb_h60(t_rgb2hsv *color);
-void		hcv2rgb_h120(t_rgb2hsv *color);
-void		hcv2rgb_h180(t_rgb2hsv *color);
-void		hcv2rgb_h240(t_rgb2hsv *color);
-void		hcv2rgb_h300(t_rgb2hsv *color);
 int			ft_fractol(t_point p, t_fractol fractol);
 t_point		ft_transposer(const t_point z, t_fractol fractol);
 t_point		mac2rod(t_point pixel, t_fractol fractol);

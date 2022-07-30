@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:27:56 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/11 19:00:02 by mochegri         ###   ########.fr       */
+/*   Updated: 2022/07/30 20:24:33 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_render(t_fractol *fractol)
 				my_mlx_pixl_put(&(fractol->img), p.x, p.y, 0);
 			else
 				my_mlx_pixl_put(&(fractol->img), p.x, p.y, create_trgb(0,
-						n * 3.1875, (n % 10) * 255 / 8, fractol->b % 255));
+					n * 3.1875, (n % 10) * 255 / 8, fractol->b *n % 255));
 		}
 	}
 	mlx_put_image_to_window(fractol->mlx_ptr, fractol->win_ptr,

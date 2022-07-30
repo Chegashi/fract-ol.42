@@ -17,13 +17,12 @@ Graphics
 
 
 # project page
-![docs](asset/note.png)
-
-## map2D
-![docs](asset/map2d.png)
-
-## 3D
-![docs](asset/map1.png)
-
-## bonus
-![docs](asset/map4.png)
+![docs](asset/1.png)
+![docs](asset/2.png)
+![docs](asset/3.png)
+![docs](asset/4.png)
+![docs](asset/5.png)
+![docs](asset/6.png)
+![docs](asset/7.png)
+![docs](asset/8.png)
+![docs](asset/9.png)

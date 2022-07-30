@@ -1,0 +1,11 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/mochegri/Documents/fract-ol.42/fractol'
+gcc -Wall -Wextra -Werror  -c src/main.c src/libft.c src/win.c src/key.c src/render.c src/ft_math.c src/mandelbrot.c src/ft_math2.c  
+ar -rc fractol.a *.o
+ranlib fractol.a 
+gcc -Wall -Wextra -Werror  -I /usr/local/include fractol.a -L /usr/local/lib/ \
+	-lmlx -framework OpenGL -framework AppKit -o fractol -I0g
+rm *.o
+rm fractol.a
+make: Leaving directory `/Users/mochegri/Documents/fract-ol.42/fractol'
+ 

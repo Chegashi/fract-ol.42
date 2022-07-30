@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:04:41 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/11 18:58:05 by mochegri         ###   ########.fr       */
+/*   Updated: 2022/07/30 20:20:37 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	key_hook(int keycode, t_fractol *fractol)
 void	ft_color_key(int keycode, t_fractol *fractol)
 {
 	if (keycode == KEY_PLUS)
-		fractol->b += 25;
+		fractol->b += 10;
 	else if (keycode == KEY_MOIS)
-		fractol->b -= 25;
+		fractol->b -= 10;
 }

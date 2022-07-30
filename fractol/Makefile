@@ -6,7 +6,7 @@
 #    By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/06 15:08:16 by mochegri          #+#    #+#              #
-#    Updated: 2021/09/11 18:37:59 by mochegri         ###   ########.fr        #
+#    Updated: 2022/07/30 20:19:54 by mochegri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,6 @@ SRCS = 	src/main.c \
 		src/key.c \
 		src/render.c \
 		src/ft_math.c \
-		src/colors.c \
-		src/hcv2rgb.c \
 		src/mandelbrot.c \
 		src/ft_math2.c \
 
