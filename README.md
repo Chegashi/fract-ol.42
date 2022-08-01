@@ -33,9 +33,7 @@ Graphics
 ![docs](asset/14.png)
 ![docs](asset/15.png)
 ![docs](asset/16.png)
-![docs](asset/17.png)
 ![docs](asset/18.png)
-![docs](asset/19.png)
 ![docs](asset/77.png)
 ![docs](asset/88.png)
 
