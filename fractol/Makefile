@@ -6,13 +6,13 @@
 #    By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/06 15:08:16 by mochegri          #+#    #+#              #
-#    Updated: 2022/07/30 20:19:54 by mochegri         ###   ########.fr        #
+#    Updated: 2022/08/02 00:32:41 by mochegri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
-flags = -Wall -Wextra -Werror 
+flags = -Wall -Wextra -Werror -g
 SRCS = 	src/main.c \
 		src/libft.c \
 		src/win.c \
@@ -29,7 +29,7 @@ $(NAME): $(SRCS)
 	@ar -rc fractol.a *.o
 	@ranlib fractol.a 
 	@gcc $(flags) -I /usr/local/include fractol.a -L /usr/local/lib/ \
-	-lmlx -framework OpenGL -framework AppKit -o $(NAME) -I0g
+	-lmlx -framework OpenGL -framework AppKit -o $(NAME) -I0g -Ofast
 	@rm *.o
 	@rm fractol.a
 
@@ -46,6 +46,33 @@ re:		fclean all
 
 Julia: re
 	./fractol Julia
+
+Julia_1: re
+	./fractol Julia_1
+
+Julia_2: re
+	./fractol Julia_2
+
+Julia_3: re
+	./fractol Julia_3
+
+Julia_4: re
+	./fractol Julia_4
+
+Julia_5: re
+	./fractol Julia_5
+
+Julia_6: re
+	./fractol Julia_6
+
+Julia_7: re
+	./fractol Julia_7
+
+Julia_8: re
+	./fractol Julia_8
+
+Julia_9: re
+	./fractol Julia_9
 
 Mandelbrot : re
 	./fractol Mandelbrot

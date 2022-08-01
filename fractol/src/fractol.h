@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:20:27 by mochegri          #+#    #+#             */
-/*   Updated: 2022/07/30 20:24:17 by mochegri         ###   ########.fr       */
+/*   Updated: 2022/08/02 00:36:33 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 # include <signal.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-# define MSG "usage : fractol [fractals]\nfractals \
-	:\n--> Mandelbrot\n--> Julia\n--> Mandelbrot_4\n--> Flower\n"
-# define WIDTH 800
-# define HEIGHT 800
+# define MSG "usage : fractol [fractals]\nfractals:"
+
+# define WIDTH 1000
+# define HEIGHT 1000
 # define ESC 53
 # define ZOOM_IN 5
 # define ZOOM_OUT 4
-# define MAX_ITER 80
+# define MAX_ITER 255
 # define KEY_UP 126
 # define KEY_DOWN 125
 # define KEY_LEEFT 124
@@ -100,10 +100,10 @@ t_point		ft_transposer(const t_point z, t_fractol fractol);
 t_point		mac2rod(t_point pixel, t_fractol fractol);
 t_point		rod2mac(t_point p1, t_fractol fractol);
 int			ft_fractal_is_def(char *s);
-int			mandelbrot_4(const t_point c);
-int			julia(const t_point c);
+int			mandelbrot_4(t_point c);
+int			julia(t_point z, t_point c);
 t_point		ft_fraction(t_point z1);
 t_point		ft_cos_z(t_point z);
-int			flower(const t_point c);
+int			flower(t_point c);
 void		ft_color_key(int keycode, t_fractol *fractol);
 #endif

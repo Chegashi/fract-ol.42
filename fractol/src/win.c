@@ -6,7 +6,7 @@
 /*   By: mochegri <mochegri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 15:23:04 by mochegri          #+#    #+#             */
-/*   Updated: 2021/09/11 18:43:38 by mochegri         ###   ########.fr       */
+/*   Updated: 2022/08/02 00:31:21 by mochegri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	ft_init_fractal(t_fractol *fractol)
 	fractol->img.addr = mlx_get_data_addr(fractol->img.img,
 			&(fractol->img.bpp), &(fractol->img.l_len), &(fractol->img.endian));
 	fractol->re_start = -2;
-	fractol->re_end = 1;
-	fractol->img_start = -1;
-	fractol->img_end = 1;
-	fractol->b = 0;
+	fractol->re_end = 2;
+	fractol->img_start = -2;
+	fractol->img_end = 2;
+	fractol->b = 10;
 	ft_render(fractol);
 }
 
